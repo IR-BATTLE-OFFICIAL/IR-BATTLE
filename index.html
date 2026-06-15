@@ -725,13 +725,23 @@
         async function fetchLiveData() {
             const configRef = doc(db, "settings", "app_config");
 
-            // --- Increment visitCount on page load ---
-            try {
-                await setDoc(configRef, {
-                    visitCount: increment(1)
-                }, { merge: true });
-            } catch (e) {
-                console.error("Error incrementing visitCount:", e);
+            // Set loading defaults
+            document.getElementById('totalWinnings').innerText = "Loading...";
+            document.getElementById('appRating').innerText = "Loading...";
+            document.getElementById('downloadCount').innerText = "Loading...";
+            document.getElementById('visitCount').innerText = "Loading...";
+
+            // Track unique visitor
+            if (!localStorage.getItem('arenabattletv_visitor')) {
+                const uniqueId = Math.random().toString(36).substring(2) + Date.now().toString(36);
+                localStorage.setItem('arenabattletv_visitor', uniqueId);
+                try {
+                    await setDoc(configRef, {
+                        visitCount: increment(1)
+                    }, { merge: true });
+                } catch (e) {
+                    console.error("Error updating visitor count:", e);
+                }
             }
 
             // Set safe default values immediately
