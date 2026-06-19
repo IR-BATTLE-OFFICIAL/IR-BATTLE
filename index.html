@@ -586,6 +586,14 @@
             <a href="https://whatsapp.com/channel/0029VbCMxXV5Ejxq0XOsue0g" id="waLink" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p>ARENA BATTLE TV is a gaming platform for eSports enthusiasts. We do not support gambling.</p>
+        
+        <div class="footer-legal-links" style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="#terms" onclick="openPolicy('terms')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Terms & Conditions</a>
+            <a href="#privacy" onclick="openPolicy('privacy')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Privacy Policy</a>
+            <a href="#refund" onclick="openPolicy('refund')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Refund & Cancellation</a>
+            <a href="#contact" onclick="openPolicy('contact')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Contact Us</a>
+        </div>
+
         <p class="copyright">&copy; 2026 ARENA BATTLE TV Official. All rights reserved.</p>
     </footer>
 
@@ -829,7 +837,120 @@
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
+        // --- Legal Policy Modal JS ---
+        window.openPolicy = (type) => {
+            document.getElementById('legalModal').style.display = 'flex';
+            switchTab(type);
+        };
+
+        window.closePolicy = () => {
+            document.getElementById('legalModal').style.display = 'none';
+            // Clear URL hash quietly
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        };
+
+        window.switchTab = (type) => {
+            // Hide all contents
+            document.querySelectorAll('.policy-content').forEach(c => c.style.display = 'none');
+            // Remove active tab styles
+            document.querySelectorAll('[id^="tab-"]').forEach(t => {
+                t.style.color = 'var(--text-dim)';
+                t.style.background = 'none';
+            });
+            
+            // Show target content
+            const content = document.getElementById('content-' + type);
+            if (content) content.style.display = 'block';
+            
+            // Set active tab style
+            const tab = document.getElementById('tab-' + type);
+            if (tab) {
+                tab.style.color = 'black';
+                tab.style.background = 'var(--primary)';
+            }
+        };
+
+        // Handle URL anchor links on load
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1);
+            const types = ['terms', 'privacy', 'refund', 'contact'];
+            if (types.includes(hash)) {
+                openPolicy(hash);
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1);
+            const types = ['terms', 'privacy', 'refund', 'contact'];
+            if (types.includes(hash)) {
+                openPolicy(hash);
+            }
+        });
+
         fetchLiveData();
     </script>
+
+    <!-- Legal Policies Modal -->
+    <div id="legalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1001; align-items:center; justify-content:center; backdrop-filter: blur(8px);">
+        <div style="background:var(--card-bg); padding:30px; border-radius:24px; max-width:650px; width:90%; max-height:85vh; overflow-y:auto; border:1px solid rgba(255,255,255,0.1); position:relative; box-shadow:0 20px 40px rgba(0,0,0,0.5);">
+            <button onclick="closePolicy()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+            
+            <!-- Modal Header / Tabs -->
+            <div style="display:flex; gap:10px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:20px; overflow-x:auto; white-space:nowrap; scrollbar-width: none;">
+                <button id="tab-terms" onclick="switchTab('terms')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Terms & Conditions</button>
+                <button id="tab-privacy" onclick="switchTab('privacy')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Privacy Policy</button>
+                <button id="tab-refund" onclick="switchTab('refund')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Refund Policy</button>
+                <button id="tab-contact" onclick="switchTab('contact')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Contact Us</button>
+            </div>
+            
+            <!-- Terms Content -->
+            <div id="content-terms" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Terms & Conditions</h3>
+                <p>Welcome to ARENA BATTLE TV. By downloading, installing, or using the app, you agree to comply with and be bound by the following Terms and Conditions.</p>
+                <h4 style="margin-top:15px; color:white;">1. Eligibility</h4>
+                <p>Users must be at least 18 years of age (or have parental permission) to participate in tournaments. Users from states where skill-based gaming is restricted are prohibited from participating in paid matches.</p>
+                <h4 style="margin-top:15px; color:white;">2. User Conduct</h4>
+                <p>Cheating, using hacks, modified files, or teaming up with competitors in match-play will result in immediate ban and forfeiture of all winnings. We maintain a zero-tolerance policy against anti-fairplay.</p>
+                <h4 style="margin-top:15px; color:white;">3. Intellectual Property</h4>
+                <p>All trademarks, graphics, and services related to ARENA BATTLE TV are owned by us. You may not reproduce or reuse assets without prior authorization.</p>
+            </div>
+            
+            <!-- Privacy Content -->
+            <div id="content-privacy" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Privacy Policy</h3>
+                <p>At ARENA BATTLE TV, we prioritize the privacy of our visitors. This Privacy Policy document outlines the types of information we collect and how we use it.</p>
+                <h4 style="margin-top:15px; color:white;">1. Data Collection</h4>
+                <p>We collect basic user profile details (such as Name, Email, Phone number, and Free Fire UID) on signup to authenticate your identity and facilitate payouts securely.</p>
+                <h4 style="margin-top:15px; color:white;">2. How We Use Data</h4>
+                <p>We use your information to organize tournaments, verify match results, process deposits/withdrawals, and prevent fraudulent activity on our platform.</p>
+                <h4 style="margin-top:15px; color:white;">3. Data Protection</h4>
+                <p>Your transaction details, screenshots, and personal profiles are secured safely using industry-standard Firebase authentication and encryption protocols.</p>
+            </div>
+            
+            <!-- Refund Content -->
+            <div id="content-refund" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Refund & Cancellation Policy</h3>
+                <p>Our refund policy outlines the terms for transactions made via our platform:</p>
+                <h4 style="margin-top:15px; color:white;">1. Deposits</h4>
+                <p>All deposits made to the ARENA BATTLE TV wallet are final. Wallet balance cannot be refunded or cancelled once credited, except in cases of transaction failure where balance was not updated but amount was debited.</p>
+                <h4 style="margin-top:15px; color:white;">2. Tournament Cancellations</h4>
+                <p>If a tournament is cancelled by the admin due to insufficient players, technical difficulties, or server issues, the full entry fee will be refunded back to the user's wallet automatically.</p>
+                <h4 style="margin-top:15px; color:white;">3. Disqualification</h4>
+                <p>If a player is disqualified from a tournament for cheating, rules violations, or missing the match schedule, no entry fee refunds will be processed.</p>
+            </div>
+            
+            <!-- Contact Content -->
+            <div id="content-contact" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Contact Us</h3>
+                <p>If you have any questions, feedback, or issues regarding payments or tournaments, please reach out to us:</p>
+                <div style="margin-top:20px; background:rgba(255,255,255,0.05); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
+                    <p style="margin-bottom:10px;"><i class="fas fa-envelope" style="color:var(--primary); margin-right:10px;"></i> <strong>Email Support:</strong> monu.paswan9978@gmail.com</p>
+                    <p style="margin-bottom:10px;"><i class="fab fa-whatsapp" style="color:var(--primary); margin-right:10px;"></i> <strong>WhatsApp Support:</strong> Join our WhatsApp channel from the footer links</p>
+                    <p style="margin-bottom:0;"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:10px;"></i> <strong>Office:</strong> Patna, Bihar, India</p>
+                </div>
+                <p style="margin-top:20px; font-size:0.85rem; color:var(--text-dim);">We usually respond to email support queries within 24-48 business hours.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
