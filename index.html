@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARENA BATTLE TV - No.1 Free Fire Tournament Platform</title>
-    
+    <title>ARENA BATTLE TV - No.1 Free Fire Tournament Platform India</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Download ARENA BATTLE TV, India's most trusted Free Fire tournament platform. Join daily Solo, Duo, and Squad matches, win real cash prizes, and enjoy instant withdrawals.">
-    <meta name="keywords" content="ARENA BATTLE TV, Free Fire Tournament App, Free Fire eSports India, Win Cash Free Fire, Arena Battle TV Download, Free Fire Tournament Platform, Daily eSports Tournaments">
+    <meta name="description" content="Download ARENA BATTLE TV - India's most trusted Free Fire tournament platform. Join daily Solo, Duo, and Squad matches, win real cash prizes, and enjoy instant withdrawals.">
+    <meta name="keywords" content="ARENA BATTLE TV, Free Fire Tournament App, Free Fire eSports India, Win Cash Free Fire, Arena Battle TV Download, Free Fire Tournament Platform">
     <meta name="author" content="ARENA BATTLE TV Official">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://arenabattletv.github.io/tunament-website/">
-    
-    <!-- Favicon / Brand Icon -->
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arenabattletv.github.io/tunament-website/">
     <meta property="og:title" content="ARENA BATTLE TV - No.1 Free Fire Tournament Platform">
-    <meta property="og:description" content="Join India's biggest Free Fire eSports community. Daily tournaments, fair play, and instant rewards. Download the APK now!">
+    <meta property="og:description" content="Join India's biggest Free Fire eSports community. Daily tournaments, fair play, and instant rewards.">
     <meta property="og:image" content="https://arenabattletv.github.io/tunament-website/logo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://arenabattletv.github.io/tunament-website/">
     <meta property="twitter:title" content="ARENA BATTLE TV - No.1 Free Fire Tournament Platform">
-    <meta property="twitter:description" content="Join India's biggest Free Fire eSports community. Daily tournaments, fair play, and instant rewards. Download the APK now!">
     <meta property="twitter:image" content="https://arenabattletv.github.io/tunament-website/logo.png">
 
-    <!-- Font Awesome for Icons -->
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary: #ff4b2b;
             --secondary: #ff416c;
+            --gold: #FFD700;
             --glow: rgba(255, 75, 43, 0.5);
-            --dark-bg: #0b0b0e;
-            --card-bg: #16161d;
+            --glow-gold: rgba(255, 215, 0, 0.3);
+            --dark-bg: #080810;
+            --card-bg: #12121c;
+            --card-border: rgba(255,255,255,0.07);
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
+            --text-dim: #8888aa;
             --success: #00ff88;
+            --gradient: linear-gradient(135deg, #ff4b2b, #ff416c);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -60,506 +60,1011 @@
             overflow-x: hidden;
         }
 
-        /* --- Background Animation --- */
-        .bg-glow {
+        /* ===== ANIMATED BACKGROUND ===== */
+        .bg-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% -20%, #3a1c1c 0%, transparent 50%);
+            top:0; left:0; width:100%; height:100%;
             z-index: -1;
+            background: radial-gradient(ellipse at 20% 20%, rgba(255,75,43,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(255,65,108,0.06) 0%, transparent 50%),
+                        var(--dark-bg);
+        }
+        .bg-canvas::before {
+            content:'';
+            position:absolute; top:0; left:0; right:0; bottom:0;
+            background-image: radial-gradient(circle, rgba(255,75,43,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        /* --- Header --- */
-        header {
-            padding: 20px;
-            text-align: center;
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(8,8,16,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
         }
-
-        .logo-container {
-            position: relative;
-            display: inline-block;
+        nav.scrolled {
+            background: rgba(8,8,16,0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
         }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            box-shadow: 0 0 30px var(--glow);
-            border: 2px solid var(--primary);
-            animation: float 3s ease-in-out infinite;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1.5px solid var(--primary);
         }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 40px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
+        .nav-brand span {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            letter-spacing: 1px;
         }
-
-        .tagline {
-            font-size: 1.2rem;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
             color: var(--text-dim);
-            margin-bottom: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: white; }
+        .nav-download-btn {
+            background: var(--gradient);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            box-shadow: 0 4px 20px var(--glow);
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+        .nav-download-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 30px var(--glow) !important;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* --- Irresistible Button --- */
-        .download-wrapper {
-            margin: 40px 0;
-        }
-
-        .download-btn {
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
             position: relative;
+        }
+
+        .hero-badge {
             display: inline-flex;
             align-items: center;
+            gap: 8px;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 70%, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
             gap: 15px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient);
             color: white;
-            padding: 22px 50px;
-            font-size: 1.5rem;
+            padding: 18px 40px;
+            font-size: 1.1rem;
             font-weight: 700;
-            text-decoration: none;
+            border: none;
             border-radius: 100px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 40px var(--glow);
+            position: relative;
+            overflow: hidden;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px var(--glow);
-            border: 2px solid rgba(255,255,255,0.2);
-            overflow: hidden;
         }
-
-        .download-btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 20px 60px var(--glow);
-            border: 2px solid white;
-        }
-
-        .download-btn i {
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-5px);}
-            60% {transform: translateY(-3px);}
-        }
-
-        .btn-shine {
+        .btn-primary::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: all 0.6s;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
             animation: shine 3s infinite;
         }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 100%; }
-            100% { left: 100%; }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 50px var(--glow);
         }
-
-        .file-info {
-            display: block;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        /* --- Trust Badges --- */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: flex;
+        .btn-secondary {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--success);
-            background: rgba(0, 255, 136, 0.1);
-            padding: 8px 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            padding: 18px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 100px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
 
-        /* --- Stats Section --- */
-        .stats {
+        /* ===== STATS BAR ===== */
+        .stats-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 50px 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
+
+        .stat-item {
+            background: var(--card-bg);
+            padding: 25px 20px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .stat-item:hover { background: rgba(255,75,43,0.08); }
 
         .stat-item h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--primary);
+            margin-bottom: 5px;
         }
-
         .stat-item p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-dim);
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- Features --- */
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,75,43,0.1);
+            border: 1px solid rgba(255,75,43,0.3);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            margin: 60px 0 30px;
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
 
+        .section-desc {
+            color: var(--text-dim);
+            font-size: 1rem;
+            max-width: 550px;
+            margin-bottom: 50px;
+        }
+
+        /* ===== FEATURES GRID ===== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .feature-card {
             background: var(--card-bg);
-            padding: 30px;
+            border: 1px solid var(--card-border);
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-            text-align: left;
+            padding: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover::before { transform: scaleX(1); }
         .feature-card:hover {
-            border-color: var(--primary);
+            border-color: rgba(255,75,43,0.3);
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(255,75,43,0.12);
+            border: 1px solid rgba(255,75,43,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
+        }
+        .feature-icon i {
+            font-size: 1.5rem;
+            color: var(--primary);
         }
 
         .feature-card h4 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 10px;
         }
-
         .feature-card p {
             color: var(--text-dim);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
 
-        /* --- Installation Guide --- */
-        .guide {
-            background: rgba(255, 75, 43, 0.05);
-            padding: 40px 20px;
+        /* ===== HOW IT WORKS ===== */
+        .hiw-section {
+            background: rgba(255,75,43,0.03);
+            border: 1px solid rgba(255,75,43,0.08);
             border-radius: 30px;
-            margin: 60px 20px;
+            padding: 60px 40px;
+            margin: 0 20px;
         }
 
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 50px;
+            position: relative;
         }
 
-        .step {
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
+        .step-card {
             text-align: center;
+            padding: 20px;
+            position: relative;
         }
 
         .step-num {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
+            width: 56px;
+            height: 56px;
+            background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px var(--glow);
         }
 
-        /* --- Footer --- */
-        footer {
-            padding: 60px 20px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .social-links {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        .copyright {
-            color: #555;
-            font-size: 0.8rem;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .download-btn { padding: 18px 30px; font-size: 1.2rem; width: 100%; justify-content: center; }
-        }
-        /* --- Review Section --- */
-        .reviews-section {
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 30px;
-            margin: 60px 20px;
-        }
-
-        .review-form {
-            max-width: 600px;
-            margin: 0 auto 50px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: left;
-        }
-
-        .star-rating {
-            display: flex;
-            gap: 10px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        .star-rating i {
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .star-rating i.active {
-            color: #ffcc00;
-        }
-
-        .review-form input, .review-form textarea {
-            width: 100%;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid #444;
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-family: inherit;
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
+        .step-card h5 {
             font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .step-card p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--glow);
-        }
-
-        .reviews-list {
+        /* ===== TOURNAMENT TYPES ===== */
+        .tournament-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .tournament-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .tournament-card:hover {
+            border-color: var(--gold);
+            background: rgba(255,215,0,0.04);
+            transform: translateY(-4px);
+        }
+        .tournament-card .t-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .tournament-card h5 {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .tournament-card p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .tournament-card .prize {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(255,215,0,0.12);
+            border: 1px solid rgba(255,215,0,0.3);
+            color: var(--gold);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== TRUST BADGES ===== */
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,255,136,0.06);
+            border: 1px solid rgba(0,255,136,0.2);
+            color: var(--success);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 40px;
         }
 
         .review-card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: left;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.3s;
         }
+        .review-card:hover { border-color: rgba(255,215,0,0.2); }
 
         .review-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            justify-content: space-between;
+            margin-bottom: 12px;
         }
-
         .review-name {
             font-weight: 600;
-            color: var(--primary);
+            font-size: 0.95rem;
         }
-
-        .review-stars {
-            color: #ffcc00;
-            font-size: 0.9rem;
-        }
-
+        .review-stars { color: var(--gold); font-size: 0.85rem; }
         .review-text {
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .review-form-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 35px;
+            max-width: 580px;
+            margin: 0 auto 50px;
+        }
+        .review-form-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .star-rating i { cursor: pointer; transition: 0.2s; }
+        .star-rating i.active { color: var(--gold); }
+        .star-rating i:hover { transform: scale(1.2); }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 13px 16px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-input::placeholder { color: var(--text-dim); }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow);
+        }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* ===== DOWNLOAD MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 35px;
+            max-width: 420px;
+            width: 92%;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 18px; right: 18px;
+            background: rgba(255,255,255,0.08);
+            border: none;
+            color: white;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.3s;
+        }
+        .modal-close:hover { background: rgba(255,75,43,0.3); }
+        .modal-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        .modal-box p.sub { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 25px; }
+
+        .apk-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.04);
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: all 0.3s;
+        }
+        .apk-option:hover {
+            border-color: var(--primary);
+            background: rgba(255,75,43,0.07);
+            transform: translateX(4px);
+        }
+        .apk-icon {
+            width: 44px; height: 44px;
+            background: rgba(255,75,43,0.12);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .apk-info .apk-name { font-weight: 600; font-size: 0.95rem; }
+        .apk-info .apk-desc { color: var(--text-dim); font-size: 0.78rem; margin-top: 2px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .footer-logo img {
+            width: 45px; height: 45px;
+            border-radius: 12px;
+            border: 1.5px solid var(--primary);
+        }
+        .footer-logo span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 25px 0;
+        }
+        .social-links a {
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .footer-legal a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .footer-legal a:hover { color: var(--primary); }
+        .footer-disclaimer {
+            color: #444;
+            font-size: 0.78rem;
+            max-width: 600px;
+            margin: 15px auto 0;
+            line-height: 1.6;
+        }
+
+        /* ===== LEGAL MODAL ===== */
+        .legal-modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.88);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        .legal-modal-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 35px;
+            max-width: 680px;
+            width: 92%;
+            max-height: 88vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .legal-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .legal-tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .legal-tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        .policy-content {
+            display: none;
+            color: rgba(255,255,255,0.82);
+            font-size: 0.93rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+        .policy-content h3 { color: var(--primary); margin-bottom: 15px; font-family: 'Orbitron', sans-serif; font-size: 1rem; }
+        .policy-content h4 { margin-top: 18px; margin-bottom: 8px; color: white; }
+        .policy-content p { margin-bottom: 10px; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shine {
+            0%   { left: -100%; }
+            20%  { left: 100%; }
+            100% { left: 100%; }
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50%     { transform: translateY(-8px); }
+        }
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0 rgba(255,75,43,0.4); }
+            70%  { box-shadow: 0 0 0 20px rgba(255,75,43,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,75,43,0); }
+        }
+
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        .pulse-anim { animation: pulse-ring 2s infinite; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav { padding: 12px 20px; }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 68px; left: 0; right: 0;
+                background: rgba(8,8,16,0.98);
+                padding: 20px;
+                gap: 15px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .stats-bar { grid-template-columns: repeat(2,1fr); }
+            .hiw-section { padding: 40px 20px; margin: 0 10px; }
+            .steps-row { grid-template-columns: repeat(2,1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .stats-bar { grid-template-columns: 1fr 1fr; border-radius: 16px; }
+            .stat-item h3 { font-size: 1.4rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .btn-primary { padding: 15px 28px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+<div class="bg-canvas"></div>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="ARENA BATTLE TV Logo" class="logo" onerror="this.src='https://via.placeholder.com/100?text=FF+Arena'">
+<!-- ===== NAVBAR ===== -->
+<nav id="mainNav">
+    <a href="#" class="nav-brand">
+        <img src="logo.png" alt="Arena Battle TV">
+        <span>ARENA BATTLE TV</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="#how-to-play">How to Play</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#" onclick="showDownloadOptions(); return false;" class="nav-download-btn"><i class="fab fa-android"></i> Download APK</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+    <div class="hero-badge">
+        <i class="fas fa-fire"></i>
+        🏆 India's #1 Free Fire Tournament Platform
+    </div>
+
+    <h1>ARENA BATTLE TV</h1>
+    <p class="hero-sub">Join thousands of players in daily Free Fire tournaments. Win real cash prizes, get instant payouts, and prove your skills!</p>
+
+    <div class="hero-actions">
+        <button onclick="showDownloadOptions()" class="btn-primary pulse-anim">
+            <i class="fab fa-android"></i>
+            Download APK Free
+        </button>
+        <a href="#features" class="btn-secondary">
+            <i class="fas fa-play-circle"></i>
+            See Features
+        </a>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <h3 id="downloadCount">...</h3>
+            <p><i class="fas fa-download" style="margin-right:5px;color:var(--primary)"></i>Downloads</p>
         </div>
-    </header>
+        <div class="stat-item">
+            <h3 id="visitCount">...</h3>
+            <p><i class="fas fa-users" style="margin-right:5px;color:var(--primary)"></i>Visitors</p>
+        </div>
+        <div class="stat-item">
+            <h3 id="totalWinnings">...</h3>
+            <p><i class="fas fa-rupee-sign" style="margin-right:5px;color:var(--primary)"></i>Winnings Paid</p>
+        </div>
+        <div class="stat-item">
+            <h3 id="appRating">...</h3>
+            <p><i class="fas fa-star" style="margin-right:5px;color:#FFD700"></i>User Rating</p>
+        </div>
+    </div>
+</section>
 
-    <main class="hero">
-        <h1>ARENA BATTLE TV</h1>
-        <p class="tagline">India's Most Trusted Free Fire Tournament Platform</p>
-        
-        <div class="trust-badges">
-            <div class="badge"><i class="fas fa-shield-alt"></i> 100% Safe & Secure</div>
-            <div class="badge"><i class="fas fa-check-circle"></i> Verified Payments</div>
-            <div class="badge"><i class="fas fa-user-secret"></i> Anti-Cheat Protection</div>
+<!-- ===== TRUST BADGES ===== -->
+<div style="max-width:900px;margin:0 auto;padding:0 20px 40px;">
+    <div class="trust-row">
+        <div class="trust-badge"><i class="fas fa-shield-alt"></i> 100% Safe & Secure</div>
+        <div class="trust-badge"><i class="fas fa-check-circle"></i> Verified Payments</div>
+        <div class="trust-badge"><i class="fas fa-user-secret"></i> Anti-Cheat System</div>
+        <div class="trust-badge"><i class="fas fa-bolt"></i> Instant Withdrawals</div>
+    </div>
+</div>
+
+<!-- ===== FEATURES ===== -->
+<section id="features" style="background:rgba(255,255,255,0.01); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); padding:80px 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+        <div class="reveal">
+            <div class="section-tag"><i class="fas fa-star"></i> Features</div>
+            <h2 class="section-title">Why Choose <span style="color:var(--primary)">ARENA BATTLE TV?</span></h2>
+            <p class="section-desc">Everything you need for a competitive Free Fire experience — from tournaments to payouts.</p>
         </div>
 
-        <div class="download-wrapper">
-            <button onclick="showDownloadOptions()" id="downloadBtn" class="download-btn">
-                <i class="fab fa-android"></i>
-                <span>Download APK Now</span>
-                <div class="btn-shine"></div>
-            </button>
-            <span class="file-info"><i class="fas fa-virus-slash"></i> Scanned by Play Protect & No Viruses Found</span>
-        </div>
-
-        <!-- Download Modal -->
-        <div id="downloadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center;">
-            <div style="background:var(--card-bg); padding:30px; border-radius:20px; max-width:400px; width:90%; border:1px solid var(--primary);">
-                <h3 style="margin-bottom:20px; font-family:'Orbitron';">Select Your Device</h3>
-                
-                <div id="apkOptions">
-                    <p style="color:var(--text-dim);">Loading versions...</p>
-                </div>
-
-                <button onclick="hideDownloadOptions()" style="margin-top:20px; background:none; border:1px solid #444; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Close</button>
-            </div>
-        </div>
-
-        <div class="stats">
-            <div class="stat-item">
-                <h3 id="downloadCount">...</h3>
-                <p>Downloads</p>
-            </div>
-            <div class="stat-item">
-                <h3 id="visitCount">...</h3>
-                <p>Visitors</p>
-            </div>
-            <div class="stat-item">
-                <h3 id="totalWinnings">...</h3>
-                <p>Winnings Distributed</p>
-            </div>
-            <div class="stat-item">
-                <h3 id="appRating">...</h3>
-                <p>User Rating</p>
-            </div>
-        </div>
-    </main>
-
-    <section id="features">
-        <h2 class="section-title">Why Choose ARENA BATTLE TV?</h2>
-        <div class="features-grid">
+        <div class="features-grid reveal">
             <div class="feature-card">
-                <i class="fas fa-trophy"></i>
+                <div class="feature-icon"><i class="fas fa-trophy"></i></div>
                 <h4>Daily Tournaments</h4>
-                <p>Solo, Duo, and Squad matches every hour. Join and show your skills to win big prizes.</p>
+                <p>Solo, Duo, and Squad matches run every few hours. Never miss a chance to compete and win real cash prizes daily.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-bolt"></i>
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                 <h4>Instant Withdrawals</h4>
-                <p>Won a match? Get your winning amount instantly in your Wallet, UPI, or Bank account.</p>
+                <p>Win a match? Get your prize money deposited instantly into your wallet — withdraw via UPI or bank anytime.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-headset"></i>
-                <h4>24/7 Live Support</h4>
-                <p>Our dedicated support team is always available to help you via chat and WhatsApp.</p>
+                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                <h4>Anti-Cheat Protection</h4>
+                <p>Our advanced anti-cheat system detects hackers and cheaters instantly. Fair play is guaranteed for all players.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-user-shield"></i>
-                <h4>Fair Play Only</h4>
-                <p>Advanced anti-cheat system ensures 100% fair matches. Hackers are permanently banned.</p>
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h4>24/7 Support</h4>
+                <p>Got a problem? Our dedicated support team is available round the clock via WhatsApp and Telegram.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                <h4>Free Tournaments</h4>
+                <p>New to the platform? Join free entry tournaments to practice, gain experience, and win rewards without spending a rupee.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                <h4>Easy Deposits</h4>
+                <p>Add money to your wallet instantly via UPI, PhonePe, Google Pay, or Paytm. Fast, safe, and hassle-free.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="guide">
-        <h2 class="section-title">How to Install?</h2>
-        <div class="steps">
-            <div class="step">
+<!-- ===== TOURNAMENT TYPES ===== -->
+<section id="tournaments">
+    <div class="section">
+        <div class="reveal">
+            <div class="section-tag"><i class="fas fa-gamepad"></i> Tournament Modes</div>
+            <h2 class="section-title">Pick Your <span style="color:var(--primary)">Battle Mode</span></h2>
+            <p class="section-desc">Choose from multiple formats — compete solo or team up and dominate the battlefield.</p>
+        </div>
+
+        <div class="tournament-grid reveal">
+            <div class="tournament-card">
+                <div class="t-icon">🧍</div>
+                <h5>Solo Match</h5>
+                <p>1 vs 1 — Pure skill. No teammates, just you against the world.</p>
+                <div class="prize">Win up to ₹500+</div>
+            </div>
+            <div class="tournament-card">
+                <div class="t-icon">👥</div>
+                <h5>Duo Match</h5>
+                <p>2 players team up. Coordinate with your duo partner to dominate.</p>
+                <div class="prize">Win up to ₹1,000+</div>
+            </div>
+            <div class="tournament-card">
+                <div class="t-icon">⚔️</div>
+                <h5>Squad Match</h5>
+                <p>4-player team battles. The ultimate team coordination experience.</p>
+                <div class="prize">Win up to ₹2,000+</div>
+            </div>
+            <div class="tournament-card">
+                <div class="t-icon">🆓</div>
+                <h5>Free Tournaments</h5>
+                <p>Zero entry fee. Practice your skills and still win prizes!</p>
+                <div class="prize" style="color:var(--success);background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.2);">FREE Entry</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW TO PLAY ===== -->
+<section id="how-to-play">
+    <div class="hiw-section reveal">
+        <div style="text-align:center;">
+            <div class="section-tag" style="justify-content:center"><i class="fas fa-info-circle"></i> How It Works</div>
+            <h2 class="section-title">Start Playing in <span style="color:var(--primary)">4 Simple Steps</span></h2>
+        </div>
+        <div class="steps-row">
+            <div class="step-card">
                 <div class="step-num">1</div>
-                <p>Click the <b>Download</b> button above.</p>
+                <h5>Download APK</h5>
+                <p>Click the Download button and install the Arena Battle TV app on your Android phone.</p>
             </div>
-            <div class="step">
+            <div class="step-card">
                 <div class="step-num">2</div>
-                <p>Open the APK and click <b>Install</b>.</p>
+                <h5>Create Account</h5>
+                <p>Sign up with your mobile number, add your Free Fire UID, and complete your profile.</p>
             </div>
-            <div class="step">
+            <div class="step-card">
                 <div class="step-num">3</div>
-                <p>If prompted, select <b>"Install Anyway"</b>.</p>
+                <h5>Add Wallet Balance</h5>
+                <p>Deposit money via UPI or start with a free tournament — no deposit needed for free matches!</p>
             </div>
-            <div class="step">
+            <div class="step-card">
                 <div class="step-num">4</div>
-                <p>Login & start winning rewards!</p>
+                <h5>Join & Win!</h5>
+                <p>Browse tournaments, register, play your match, and get your prize credited instantly.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="reviews-section">
-        <h2 class="section-title">Player Reviews</h2>
-        
-        <div class="review-form">
-            <h3 style="margin-bottom:15px; font-family:'Orbitron';">Rate Our App</h3>
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+    <div class="section">
+        <div class="reveal" style="text-align:center; margin-bottom:30px;">
+            <div class="section-tag" style="justify-content:center"><i class="fas fa-star"></i> Reviews</div>
+            <h2 class="section-title">What Players <span style="color:var(--primary)">Are Saying</span></h2>
+        </div>
+
+        <div class="review-form-box reveal">
+            <h3>⭐ Rate Our App</h3>
             <div class="star-rating" id="starRating">
                 <i class="fas fa-star" data-value="1"></i>
                 <i class="fas fa-star" data-value="2"></i>
@@ -567,390 +1072,367 @@
                 <i class="fas fa-star" data-value="4"></i>
                 <i class="fas fa-star" data-value="5"></i>
             </div>
-            <input type="text" id="reviewerName" placeholder="Your Name" required>
-            <textarea id="reviewComment" placeholder="Write your feedback..." rows="3" required></textarea>
-            <button onclick="submitReview()" class="submit-btn" id="submitReviewBtn">SUBMIT REVIEW</button>
+            <input type="text" id="reviewerName" class="form-input" placeholder="Your Name">
+            <textarea id="reviewComment" class="form-input" placeholder="Write your experience..." rows="3" style="resize:vertical;"></textarea>
+            <button onclick="submitReview()" class="submit-btn" id="submitReviewBtn">Submit Review</button>
         </div>
 
-        <div class="reviews-list" id="reviewsList">
-            <!-- Reviews will be loaded here -->
-            <p style="text-align:center; color:var(--text-dim);">Loading reviews...</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/arenabattlestv?igsh=MXJiYWwxM2FuNnFxeA==" id="instaLink" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@ArenaBattlesTV" id="ytLink" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/+_tXUFQf7Ps5lMzRl" id="teleLink" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://whatsapp.com/channel/0029VbCMxXV5Ejxq0XOsue0g" id="waLink" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <p>ARENA BATTLE TV is a gaming platform for eSports enthusiasts. We do not support gambling.</p>
-        
-        <div class="footer-legal-links" style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="#terms" onclick="openPolicy('terms')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Terms & Conditions</a>
-            <a href="#privacy" onclick="openPolicy('privacy')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Privacy Policy</a>
-            <a href="#refund" onclick="openPolicy('refund')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Refund & Cancellation</a>
-            <a href="#contact" onclick="openPolicy('contact')" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">Contact Us</a>
-        </div>
-
-        <p class="copyright">&copy; 2026 ARENA BATTLE TV Official. All rights reserved.</p>
-    </footer>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getFirestore, doc, getDoc, updateDoc, setDoc, increment, onSnapshot, collection, addDoc, serverTimestamp, query, orderBy, limit, getCountFromServer } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDryf9Gtq0WpKObkZg9c1rD9geIrYDpLro",
-            authDomain: "ff-arena-31e36.firebaseapp.com",
-            projectId: "ff-arena-31e36",
-            storageBucket: "ff-arena-31e36.firebasestorage.app",
-            messagingSenderId: "886946341961",
-            appId: "1:886946341961:web:1c36aacef0b57c23d3cb98",
-            measurementId: "G-VVF8X5QJ2N"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        
-        let apkData = {};
-        let selectedRating = 0;
-
-        // Star Rating Logic
-        const stars = document.querySelectorAll('#starRating i');
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                selectedRating = parseInt(star.getAttribute('data-value'));
-                updateStars();
-            });
-        });
-
-        function updateStars() {
-            stars.forEach(star => {
-                const val = parseInt(star.getAttribute('data-value'));
-                if (val <= selectedRating) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
-        }
-
-        // Export functions to window
-        window.showDownloadOptions = () => {
-            const modal = document.getElementById('downloadModal');
-            const container = document.getElementById('apkOptions');
-            modal.style.display = 'flex';
-            
-            let html = '';
-            const versions = [
-                { id: 'v8a', name: 'Arena Battle TV - ARM64', icon: 'fas fa-bolt' },
-                { id: 'v7a', name: 'Arena Battle TV - v7a', icon: 'fas fa-mobile-alt' },
-                { id: 'x64', name: 'Arena Battle TV - x64', icon: 'fas fa-laptop' }
-            ];
-
-            versions.forEach(v => {
-                const url = apkData[`apkUrl_${v.id}`] || `Arena-Battle-TV-${v.id}.apk`;
-                const desc = apkData[`apkDesc_${v.id}`] || (v.id === 'v8a' ? "For modern phones (Fastest)" : v.id === 'v7a' ? "For older phones" : "For emulators & tablets");
-                
-                if (url) {
-                    html += `
-                        <a href="${url}" onclick="trackDownload('${v.id}')" style="display:flex; align-items:center; gap:15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:12px; margin-bottom:10px; text-decoration:none; color:white; border:1px solid rgba(255,255,255,0.1); transition:0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
-                            <i class="${v.icon}" style="font-size:1.5rem; color:var(--primary);"></i>
-                            <div style="text-align:left;">
-                                <div style="font-weight:bold;">${v.name}</div>
-                                <div style="font-size:0.8rem; color:var(--text-dim);">${desc}</div>
-                            </div>
-                        </a>
-                    `;
-                }
-            });
-
-            if (!html) html = '<p style="color:var(--text-dim);">No versions uploaded yet. Please check back later.</p>';
-            container.innerHTML = html;
-        };
-
-        window.hideDownloadOptions = () => {
-            document.getElementById('downloadModal').style.display = 'none';
-        };
-
-        window.trackDownload = async (arch) => {
-            try {
-                const configRef = doc(db, "settings", "app_config");
-                // Use setDoc with merge:true so it creates the field if it doesn't exist
-                await setDoc(configRef, {
-                    downloadCount: increment(1)
-                }, { merge: true });
-                await addDoc(collection(db, "download_logs"), {
-                    architecture: arch || 'unknown',
-                    timestamp: serverTimestamp(),
-                    userAgent: navigator.userAgent,
-                    platform: navigator.platform
-                });
-            } catch (error) {
-                console.error("Error tracking download:", error);
-            }
-        };
-
-        window.submitReview = async () => {
-            const name = document.getElementById('reviewerName').value.trim();
-            const comment = document.getElementById('reviewComment').value.trim();
-            const btn = document.getElementById('submitReviewBtn');
-
-            if (selectedRating === 0) {
-                alert("Please select a star rating!");
-                return;
-            }
-            if (!name || !comment) {
-                alert("Please fill all fields!");
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerText = "SUBMITTING...";
-
-            try {
-                await addDoc(collection(db, "website_reviews"), {
-                    name: name,
-                    rating: selectedRating,
-                    comment: comment,
-                    timestamp: serverTimestamp()
-                });
-
-                // Average rating is calculated automatically in real-time from reviews collection!
-
-                alert("Thank you for your review!");
-                document.getElementById('reviewerName').value = "";
-                document.getElementById('reviewComment').value = "";
-                selectedRating = 0;
-                updateStars();
-            } catch (error) {
-                console.error("Error submitting review:", error);
-                alert("Failed to submit review. Try again.");
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "SUBMIT REVIEW";
-            }
-        };
-
-        async function fetchLiveData() {
-            const configRef = doc(db, "settings", "app_config");
-
-            // Set loading defaults
-            document.getElementById('totalWinnings').innerText = "Loading...";
-            document.getElementById('appRating').innerText = "Loading...";
-            document.getElementById('downloadCount').innerText = "Loading...";
-            document.getElementById('visitCount').innerText = "Loading...";
-
-            // Track unique visitor
-            if (!localStorage.getItem('arenabattletv_visitor')) {
-                const uniqueId = Math.random().toString(36).substring(2) + Date.now().toString(36);
-                localStorage.setItem('arenabattletv_visitor', uniqueId);
-                try {
-                    await setDoc(configRef, {
-                        visitCount: increment(1)
-                    }, { merge: true });
-                } catch (e) {
-                    console.error("Error updating visitor count:", e);
-                }
-            }
-
-            // Set safe default values immediately
-            document.getElementById('totalWinnings').innerText = "₹0+";
-            document.getElementById('appRating').innerText = "N/A";
-            document.getElementById('downloadCount').innerText = "0+";
-            document.getElementById('visitCount').innerText = "0+";
-
-            // --- Live config data (winnings, downloads, visitors) ---
-            onSnapshot(configRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const fields = docSnap.data();
-                    apkData = fields;
-
-                    const winnings = (fields.totalWinnings !== undefined && fields.totalWinnings !== null) ? fields.totalWinnings : 0;
-                    document.getElementById('totalWinnings').innerText =
-                        "\u20b9" + formatNumber(winnings) + "+";
-
-                    const downloads = (fields.downloadCount !== undefined && fields.downloadCount !== null) ? fields.downloadCount : 0;
-                    document.getElementById('downloadCount').innerText =
-                        formatNumber(downloads) + "+";
-
-                    const visits = (fields.visitCount !== undefined && fields.visitCount !== null) ? fields.visitCount : 0;
-                    document.getElementById('visitCount').innerText =
-                        formatNumber(visits) + "+";
-
-                    if (fields.youtubeUrl) document.getElementById('ytLink').href = fields.youtubeUrl;
-                    if (fields.instagramUrl) document.getElementById('instaLink').href = fields.instagramUrl;
-                    if (fields.telegramUrl) document.getElementById('teleLink').href = fields.telegramUrl;
-                    if (fields.whatsappUrl) document.getElementById('waLink').href = fields.whatsappUrl;
-                }
-            }, (error) => {
-                console.error("Firestore config error:", error);
-            });
-
-            // Calculate real-time average rating from website_reviews
-            onSnapshot(collection(db, "website_reviews"), (snapshot) => {
-                let totalRating = 0;
-                let count = 0;
-                snapshot.forEach(doc => {
-                    const r = doc.data();
-                    if (r.rating) {
-                        totalRating += r.rating;
-                        count++;
-                    }
-                });
-                const avgRating = count > 0 ? (totalRating / count).toFixed(1) : "4.8";
-                document.getElementById('appRating').innerText = avgRating + "/5";
-            }, (error) => {
-                console.error("Firestore reviews rating error:", error);
-            });
-
-            // Fetch Recent Reviews
-            const reviewsQuery = query(collection(db, "website_reviews"), orderBy("timestamp", "desc"), limit(6));
-            onSnapshot(reviewsQuery, (snapshot) => {
-                const container = document.getElementById('reviewsList');
-                let html = '';
-                snapshot.forEach(doc => {
-                    const r = doc.data();
-                    let starsHtml = '';
-                    for (let i = 1; i <= 5; i++) {
-                        starsHtml += `<i class="${i <= r.rating ? 'fas' : 'far'} fa-star"></i>`;
-                    }
-                    html += `
-                        <div class="review-card">
-                            <div class="review-header">
-                                <span class="review-name">${r.name}</span>
-                                <div class="review-stars">${starsHtml}</div>
-                            </div>
-                            <p class="review-text">"${r.comment}"</p>
-                        </div>
-                    `;
-                });
-                if (!html) html = '<p style="grid-column: 1/-1; text-align:center; color:var(--text-dim);">No reviews yet. Be the first to rate!</p>';
-                container.innerHTML = html;
-            });
-        }
-
-        function formatNumber(num) {
-            if (!num) return "0";
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        // --- Legal Policy Modal JS ---
-        window.openPolicy = (type) => {
-            document.getElementById('legalModal').style.display = 'flex';
-            switchTab(type);
-        };
-
-        window.closePolicy = () => {
-            document.getElementById('legalModal').style.display = 'none';
-            // Clear URL hash quietly
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-        };
-
-        window.switchTab = (type) => {
-            // Hide all contents
-            document.querySelectorAll('.policy-content').forEach(c => c.style.display = 'none');
-            // Remove active tab styles
-            document.querySelectorAll('[id^="tab-"]').forEach(t => {
-                t.style.color = 'var(--text-dim)';
-                t.style.background = 'none';
-            });
-            
-            // Show target content
-            const content = document.getElementById('content-' + type);
-            if (content) content.style.display = 'block';
-            
-            // Set active tab style
-            const tab = document.getElementById('tab-' + type);
-            if (tab) {
-                tab.style.color = 'black';
-                tab.style.background = 'var(--primary)';
-            }
-        };
-
-        // Handle URL anchor links on load
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.substring(1);
-            const types = ['terms', 'privacy', 'refund', 'contact'];
-            if (types.includes(hash)) {
-                openPolicy(hash);
-            }
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.substring(1);
-            const types = ['terms', 'privacy', 'refund', 'contact'];
-            if (types.includes(hash)) {
-                openPolicy(hash);
-            }
-        });
-
-        fetchLiveData();
-    </script>
-
-    <!-- Legal Policies Modal -->
-    <div id="legalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:1001; align-items:center; justify-content:center; backdrop-filter: blur(8px);">
-        <div style="background:var(--card-bg); padding:30px; border-radius:24px; max-width:650px; width:90%; max-height:85vh; overflow-y:auto; border:1px solid rgba(255,255,255,0.1); position:relative; box-shadow:0 20px 40px rgba(0,0,0,0.5);">
-            <button onclick="closePolicy()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;"><i class="fas fa-times"></i></button>
-            
-            <!-- Modal Header / Tabs -->
-            <div style="display:flex; gap:10px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:20px; overflow-x:auto; white-space:nowrap; scrollbar-width: none;">
-                <button id="tab-terms" onclick="switchTab('terms')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Terms & Conditions</button>
-                <button id="tab-privacy" onclick="switchTab('privacy')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Privacy Policy</button>
-                <button id="tab-refund" onclick="switchTab('refund')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Refund Policy</button>
-                <button id="tab-contact" onclick="switchTab('contact')" style="background:none; border:none; color:var(--text-dim); font-weight:bold; font-family:'Orbitron'; padding:8px 16px; cursor:pointer; border-radius:8px; transition: 0.3s;">Contact Us</button>
-            </div>
-            
-            <!-- Terms Content -->
-            <div id="content-terms" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
-                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Terms & Conditions</h3>
-                <p>Welcome to ARENA BATTLE TV. By downloading, installing, or using the app, you agree to comply with and be bound by the following Terms and Conditions.</p>
-                <h4 style="margin-top:15px; color:white;">1. Eligibility</h4>
-                <p>Users must be at least 18 years of age (or have parental permission) to participate in tournaments. Users from states where skill-based gaming is restricted are prohibited from participating in paid matches.</p>
-                <h4 style="margin-top:15px; color:white;">2. User Conduct</h4>
-                <p>Cheating, using hacks, modified files, or teaming up with competitors in match-play will result in immediate ban and forfeiture of all winnings. We maintain a zero-tolerance policy against anti-fairplay.</p>
-                <h4 style="margin-top:15px; color:white;">3. Intellectual Property</h4>
-                <p>All trademarks, graphics, and services related to ARENA BATTLE TV are owned by us. You may not reproduce or reuse assets without prior authorization.</p>
-            </div>
-            
-            <!-- Privacy Content -->
-            <div id="content-privacy" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
-                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Privacy Policy</h3>
-                <p>At ARENA BATTLE TV, we prioritize the privacy of our visitors. This Privacy Policy document outlines the types of information we collect and how we use it.</p>
-                <h4 style="margin-top:15px; color:white;">1. Data Collection</h4>
-                <p>We collect basic user profile details (such as Name, Email, Phone number, and Free Fire UID) on signup to authenticate your identity and facilitate payouts securely.</p>
-                <h4 style="margin-top:15px; color:white;">2. How We Use Data</h4>
-                <p>We use your information to organize tournaments, verify match results, process deposits/withdrawals, and prevent fraudulent activity on our platform.</p>
-                <h4 style="margin-top:15px; color:white;">3. Data Protection</h4>
-                <p>Your transaction details, screenshots, and personal profiles are secured safely using industry-standard Firebase authentication and encryption protocols.</p>
-            </div>
-            
-            <!-- Refund Content -->
-            <div id="content-refund" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
-                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Refund & Cancellation Policy</h3>
-                <p>Our refund policy outlines the terms for transactions made via our platform:</p>
-                <h4 style="margin-top:15px; color:white;">1. Deposits</h4>
-                <p>All deposits made to the ARENA BATTLE TV wallet are final. Wallet balance cannot be refunded or cancelled once credited, except in cases of transaction failure where balance was not updated but amount was debited.</p>
-                <h4 style="margin-top:15px; color:white;">2. Tournament Cancellations</h4>
-                <p>If a tournament is cancelled by the admin due to insufficient players, technical difficulties, or server issues, the full entry fee will be refunded back to the user's wallet automatically.</p>
-                <h4 style="margin-top:15px; color:white;">3. Disqualification</h4>
-                <p>If a player is disqualified from a tournament for cheating, rules violations, or missing the match schedule, no entry fee refunds will be processed.</p>
-            </div>
-            
-            <!-- Contact Content -->
-            <div id="content-contact" class="policy-content" style="display:none; color:rgba(255,255,255,0.85); font-size:0.95rem; line-height:1.6; text-align:left;">
-                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron';">Contact Us</h3>
-                <p>If you have any questions, feedback, or issues regarding payments or tournaments, please reach out to us:</p>
-                <div style="margin-top:20px; background:rgba(255,255,255,0.05); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
-                    <p style="margin-bottom:10px;"><i class="fas fa-envelope" style="color:var(--primary); margin-right:10px;"></i> <strong>Email Support:</strong> monu.paswan9978@gmail.com</p>
-                    <p style="margin-bottom:10px;"><i class="fab fa-whatsapp" style="color:var(--primary); margin-right:10px;"></i> <strong>WhatsApp Support:</strong> Join our WhatsApp channel from the footer links</p>
-                    <p style="margin-bottom:0;"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:10px;"></i> <strong>Office:</strong> Patna, Bihar, India</p>
-                </div>
-                <p style="margin-top:20px; font-size:0.85rem; color:var(--text-dim);">We usually respond to email support queries within 24-48 business hours.</p>
-            </div>
+        <div class="reviews-grid reveal" id="reviewsList">
+            <p style="text-align:center; color:var(--text-dim); grid-column:1/-1;">Loading reviews...</p>
         </div>
     </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">
+            <img src="logo.png" alt="Arena Battle TV">
+            <span>ARENA BATTLE TV</span>
+        </div>
+        <p style="color:var(--text-dim); font-size:0.9rem; max-width:400px; margin:0 auto 20px;">India's most trusted Free Fire eSports tournament platform. Daily matches. Instant rewards.</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/arenabattlestv?igsh=MXJiYWwxM2FuNnFxeA==" id="instaLink" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@ArenaBattlesTV" id="ytLink" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://t.me/+_tXUFQf7Ps5lMzRl" id="teleLink" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://whatsapp.com/channel/0029VbCMxXV5Ejxq0XOsue0g" id="waLink" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-legal">
+            <a href="#terms" onclick="openPolicy('terms'); return false;">Terms &amp; Conditions</a>
+            <a href="#privacy" onclick="openPolicy('privacy'); return false;">Privacy Policy</a>
+            <a href="#refund" onclick="openPolicy('refund'); return false;">Refund &amp; Cancellation</a>
+            <a href="#contact" onclick="openPolicy('contact'); return false;">Contact Us</a>
+        </div>
+
+        <p class="footer-disclaimer">
+            ARENA BATTLE TV is a skill-based eSports platform. We do not support gambling. This app is not associated with Garena Free Fire officially.
+        </p>
+        <p style="color:#333; font-size:0.78rem; margin-top:20px;">&copy; 2026 ARENA BATTLE TV Official. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- ===== DOWNLOAD MODAL ===== -->
+<div class="modal-overlay" id="downloadModal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="hideDownloadOptions()"><i class="fas fa-times"></i></button>
+        <h3>📱 Select Your Device</h3>
+        <p class="sub">Choose the version compatible with your Android device</p>
+        <div id="apkOptions">
+            <p style="color:var(--text-dim); text-align:center;">Loading versions...</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== LEGAL MODAL ===== -->
+<div class="legal-modal" id="legalModal">
+    <div class="legal-modal-box">
+        <button class="modal-close" onclick="closePolicy()"><i class="fas fa-times"></i></button>
+
+        <div class="legal-tabs">
+            <button id="tab-terms" class="legal-tab-btn" onclick="switchTab('terms')">Terms &amp; Conditions</button>
+            <button id="tab-privacy" class="legal-tab-btn" onclick="switchTab('privacy')">Privacy Policy</button>
+            <button id="tab-refund" class="legal-tab-btn" onclick="switchTab('refund')">Refund Policy</button>
+            <button id="tab-contact" class="legal-tab-btn" onclick="switchTab('contact')">Contact Us</button>
+        </div>
+
+        <div id="content-terms" class="policy-content">
+            <h3>Terms &amp; Conditions</h3>
+            <p>Welcome to ARENA BATTLE TV. By downloading, installing, or using the app, you agree to be bound by the following terms.</p>
+            <h4>1. Eligibility</h4>
+            <p>Users must be at least 18 years of age (or have parental permission) to participate in tournaments. Users from states where skill-based gaming is restricted are prohibited from paid matches.</p>
+            <h4>2. User Conduct</h4>
+            <p>Cheating, using hacks, modified files, or teaming up with competitors will result in immediate ban and forfeiture of all winnings. We maintain a zero-tolerance policy.</p>
+            <h4>3. Intellectual Property</h4>
+            <p>All trademarks, graphics, and services related to ARENA BATTLE TV are owned by us. You may not reproduce or reuse assets without authorization.</p>
+        </div>
+        <div id="content-privacy" class="policy-content">
+            <h3>Privacy Policy</h3>
+            <p>At ARENA BATTLE TV, we prioritize the privacy of our users. This document outlines what information we collect and how we use it.</p>
+            <h4>1. Data Collection</h4>
+            <p>We collect basic user profile details (Name, Email, Phone, Free Fire UID) on signup to authenticate your identity and facilitate payouts securely.</p>
+            <h4>2. How We Use Data</h4>
+            <p>We use your information to organize tournaments, verify match results, process deposits/withdrawals, and prevent fraudulent activity.</p>
+            <h4>3. Data Protection</h4>
+            <p>Your transaction details, screenshots, and personal profiles are secured using industry-standard Firebase authentication and encryption protocols.</p>
+        </div>
+        <div id="content-refund" class="policy-content">
+            <h3>Refund &amp; Cancellation Policy</h3>
+            <p>Our refund policy outlines the terms for transactions made via our platform:</p>
+            <h4>1. Deposits</h4>
+            <p>All deposits made to the ARENA BATTLE TV wallet are final. Wallet balance cannot be refunded once credited, except in cases of transaction failure where balance was not updated but amount was debited.</p>
+            <h4>2. Tournament Cancellations</h4>
+            <p>If a tournament is cancelled by admin due to insufficient players or technical issues, the full entry fee will be refunded to the user's wallet automatically.</p>
+            <h4>3. Disqualification</h4>
+            <p>If a player is disqualified for cheating or missing the match schedule, no entry fee refunds will be processed.</p>
+        </div>
+        <div id="content-contact" class="policy-content">
+            <h3>Contact Us</h3>
+            <p>If you have any questions, feedback, or issues, please reach out to us:</p>
+            <div style="margin-top:20px; background:rgba(255,255,255,0.04); padding:20px; border-radius:14px; border:1px solid rgba(255,255,255,0.08);">
+                <p style="margin-bottom:12px;"><i class="fas fa-envelope" style="color:var(--primary); margin-right:10px;"></i> <strong>Email:</strong> monu.paswan9978@gmail.com</p>
+                <p style="margin-bottom:12px;"><i class="fab fa-whatsapp" style="color:var(--primary); margin-right:10px;"></i> <strong>WhatsApp:</strong> Join our WhatsApp channel from the footer</p>
+                <p style="margin-bottom:0;"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:10px;"></i> <strong>Location:</strong> Patna, Bihar, India</p>
+            </div>
+            <p style="margin-top:18px; font-size:0.85rem; color:var(--text-dim);">We usually respond within 24–48 business hours.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FIREBASE SCRIPT ===== -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    import { getFirestore, doc, setDoc, increment, onSnapshot, collection, addDoc, serverTimestamp, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDryf9Gtq0WpKObkZg9c1rD9geIrYDpLro",
+        authDomain: "ff-arena-31e36.firebaseapp.com",
+        projectId: "ff-arena-31e36",
+        storageBucket: "ff-arena-31e36.firebasestorage.app",
+        messagingSenderId: "886946341961",
+        appId: "1:886946341961:web:1c36aacef0b57c23d3cb98",
+        measurementId: "G-VVF8X5QJ2N"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let apkData = {};
+    let selectedRating = 0;
+
+    function formatNumber(num) {
+        if (!num) return "0";
+        if (num >= 1000) return (num / 1000).toFixed(1) + "K";
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Star Rating
+    const stars = document.querySelectorAll('#starRating i');
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.getAttribute('data-value'));
+            stars.forEach(s => {
+                s.classList.toggle('active', parseInt(s.getAttribute('data-value')) <= selectedRating);
+            });
+        });
+        star.addEventListener('mouseover', () => {
+            const val = parseInt(star.getAttribute('data-value'));
+            stars.forEach(s => {
+                s.style.color = parseInt(s.getAttribute('data-value')) <= val ? '#FFD700' : '';
+            });
+        });
+        star.addEventListener('mouseout', () => {
+            stars.forEach(s => {
+                s.style.color = '';
+            });
+        });
+    });
+
+    // Download Modal
+    window.showDownloadOptions = () => {
+        const modal = document.getElementById('downloadModal');
+        const container = document.getElementById('apkOptions');
+        modal.style.display = 'flex';
+
+        const versions = [
+            { id: 'v8a', name: 'Arena Battle TV (ARM64)', desc: 'Best for modern phones — Fastest ⚡', icon: 'fas fa-bolt' },
+            { id: 'v7a', name: 'Arena Battle TV (v7a)',   desc: 'For older/budget Android phones 📱', icon: 'fas fa-mobile-alt' },
+            { id: 'x64', name: 'Arena Battle TV (x64)',   desc: 'For emulators & tablets 💻', icon: 'fas fa-laptop' }
+        ];
+
+        let html = '';
+        versions.forEach(v => {
+            const url = apkData[`apkUrl_${v.id}`] || `Arena-Battle-TV-${v.id}.apk`;
+            html += `
+                <a href="${url}" onclick="trackDownload('${v.id}')" class="apk-option">
+                    <div class="apk-icon"><i class="${v.icon}"></i></div>
+                    <div class="apk-info">
+                        <div class="apk-name">${v.name}</div>
+                        <div class="apk-desc">${v.desc}</div>
+                    </div>
+                    <i class="fas fa-download" style="margin-left:auto;color:var(--primary);"></i>
+                </a>`;
+        });
+        container.innerHTML = html;
+    };
+
+    window.hideDownloadOptions = () => {
+        document.getElementById('downloadModal').style.display = 'none';
+    };
+
+    window.trackDownload = async (arch) => {
+        try {
+            const configRef = doc(db, "settings", "app_config");
+            await setDoc(configRef, { downloadCount: increment(1) }, { merge: true });
+            await addDoc(collection(db, "download_logs"), {
+                architecture: arch || 'unknown',
+                timestamp: serverTimestamp(),
+                userAgent: navigator.userAgent
+            });
+        } catch (e) { console.error("Track download error:", e); }
+    };
+
+    window.submitReview = async () => {
+        const name = document.getElementById('reviewerName').value.trim();
+        const comment = document.getElementById('reviewComment').value.trim();
+        const btn = document.getElementById('submitReviewBtn');
+
+        if (selectedRating === 0) { alert("Please select a star rating!"); return; }
+        if (!name || !comment) { alert("Please fill all fields!"); return; }
+
+        btn.disabled = true;
+        btn.innerText = "SUBMITTING...";
+
+        try {
+            await addDoc(collection(db, "website_reviews"), {
+                name, rating: selectedRating, comment, timestamp: serverTimestamp()
+            });
+            alert("Thank you for your review! ⭐");
+            document.getElementById('reviewerName').value = "";
+            document.getElementById('reviewComment').value = "";
+            selectedRating = 0;
+            stars.forEach(s => s.classList.remove('active'));
+        } catch (e) {
+            console.error("Review error:", e);
+            alert("Failed to submit. Try again.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Submit Review";
+        }
+    };
+
+    // Legal Modal
+    window.openPolicy = (type) => {
+        document.getElementById('legalModal').style.display = 'flex';
+        switchTab(type);
+    };
+    window.closePolicy = () => {
+        document.getElementById('legalModal').style.display = 'none';
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    };
+    window.switchTab = (type) => {
+        document.querySelectorAll('.policy-content').forEach(c => c.style.display = 'none');
+        document.querySelectorAll('.legal-tab-btn').forEach(t => t.classList.remove('active'));
+        const content = document.getElementById('content-' + type);
+        if (content) content.style.display = 'block';
+        const tab = document.getElementById('tab-' + type);
+        if (tab) tab.classList.add('active');
+    };
+
+    // Hash link support
+    const checkHash = () => {
+        const hash = window.location.hash.substring(1);
+        if (['terms','privacy','refund','contact'].includes(hash)) openPolicy(hash);
+    };
+    window.addEventListener('hashchange', checkHash);
+    window.addEventListener('DOMContentLoaded', checkHash);
+
+    // Live Firestore data
+    async function fetchLiveData() {
+        const configRef = doc(db, "settings", "app_config");
+
+        // Unique visitor tracking
+        if (!localStorage.getItem('arenabattletv_visitor')) {
+            localStorage.setItem('arenabattletv_visitor', Math.random().toString(36) + Date.now().toString(36));
+            try {
+                await setDoc(configRef, { visitCount: increment(1) }, { merge: true });
+            } catch (e) { console.error("Visitor error:", e); }
+        }
+
+        // Stats listener
+        onSnapshot(configRef, (snap) => {
+            if (snap.exists()) {
+                const d = snap.data();
+                apkData = d;
+                document.getElementById('totalWinnings').innerText = "₹" + formatNumber(d.totalWinnings || 0) + "+";
+                document.getElementById('downloadCount').innerText = formatNumber(d.downloadCount || 0) + "+";
+                document.getElementById('visitCount').innerText = formatNumber(d.visitCount || 0) + "+";
+                if (d.youtubeUrl) document.getElementById('ytLink').href = d.youtubeUrl;
+                if (d.instagramUrl) document.getElementById('instaLink').href = d.instagramUrl;
+                if (d.telegramUrl) document.getElementById('teleLink').href = d.telegramUrl;
+                if (d.whatsappUrl) document.getElementById('waLink').href = d.whatsappUrl;
+            } else {
+                document.getElementById('totalWinnings').innerText = "₹0+";
+                document.getElementById('downloadCount').innerText = "0+";
+                document.getElementById('visitCount').innerText = "0+";
+            }
+        }, (e) => {
+            console.error("Config error:", e);
+            document.getElementById('totalWinnings').innerText = "₹0+";
+            document.getElementById('downloadCount').innerText = "0+";
+            document.getElementById('visitCount').innerText = "0+";
+        });
+
+        // Rating from reviews
+        onSnapshot(collection(db, "website_reviews"), (snap) => {
+            let total = 0, count = 0;
+            snap.forEach(doc => { const r = doc.data(); if (r.rating) { total += r.rating; count++; } });
+            document.getElementById('appRating').innerText = count > 0 ? (total / count).toFixed(1) + "/5" : "N/A";
+        }, (e) => {
+            console.error("Rating error:", e);
+            document.getElementById('appRating').innerText = "N/A";
+        });
+
+        // Recent reviews
+        const q = query(collection(db, "website_reviews"), orderBy("timestamp", "desc"), limit(6));
+        onSnapshot(q, (snap) => {
+            const container = document.getElementById('reviewsList');
+            let html = '';
+            snap.forEach(doc => {
+                const r = doc.data();
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) starsHtml += `<i class="${i <= r.rating ? 'fas' : 'far'} fa-star"></i>`;
+                html += `<div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">${r.name}</span>
+                        <div class="review-stars">${starsHtml}</div>
+                    </div>
+                    <p class="review-text">"${r.comment}"</p>
+                </div>`;
+            });
+            container.innerHTML = html || '<p style="text-align:center;color:var(--text-dim);grid-column:1/-1;">No reviews yet. Be the first! ⭐</p>';
+        });
+    }
+
+    fetchLiveData();
+</script>
+
+<!-- ===== VANILLA JS ===== -->
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile nav toggle
+    window.toggleNav = () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    };
+
+    // Close nav on link click
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+
+    // Close modals on overlay click
+    document.getElementById('downloadModal').addEventListener('click', function(e) {
+        if (e.target === this) hideDownloadOptions();
+    });
+    document.getElementById('legalModal').addEventListener('click', function(e) {
+        if (e.target === this) closePolicy();
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
