@@ -602,77 +602,6 @@
         }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        /* ===== DOWNLOAD MODAL ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-        }
-        .modal-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 35px;
-            max-width: 420px;
-            width: 92%;
-            position: relative;
-        }
-        .modal-close {
-            position: absolute;
-            top: 18px; right: 18px;
-            background: rgba(255,255,255,0.08);
-            border: none;
-            color: white;
-            width: 35px; height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.3s;
-        }
-        .modal-close:hover { background: rgba(255,75,43,0.3); }
-        .modal-box h3 {
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-        }
-        .modal-box p.sub { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 25px; }
-
-        .apk-option {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.04);
-            padding: 16px;
-            border-radius: 14px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.07);
-            transition: all 0.3s;
-        }
-        .apk-option:hover {
-            border-color: var(--primary);
-            background: rgba(255,75,43,0.07);
-            transform: translateX(4px);
-        }
-        .apk-icon {
-            width: 44px; height: 44px;
-            background: rgba(255,75,43,0.12);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        .apk-info .apk-name { font-weight: 600; font-size: 0.95rem; }
-        .apk-info .apk-desc { color: var(--text-dim); font-size: 0.78rem; margin-top: 2px; }
-
         /* ===== FOOTER ===== */
         footer {
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -876,30 +805,6 @@
 
 <!-- ===== NAVBAR ===== -->
 <nav id="mainNav">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<a href="#" class="nav-brand">
-    <img src="logo.png" alt="Arena Battle TV">
-    <span>ARENA BATTLE TV</span>
-</a>
-<ul class="nav-links" id="navLinks">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#tournaments">Tournaments</a></li>
-    <li><a href="#how-to-play">How to Play</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="Arena-Battle-TV.apk" class="nav-download-btn"><i class="fab fa-android"></i> Download APK</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
-    </nav>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
-    <div class="hero-badge">
-    <i class="fas fa-fire"></i>
-    🏆 India's #1 Free Fire Tournament Platform
-=======
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
     <a href="#" class="nav-brand">
         <img src="logo.png" alt="Arena Battle TV">
         <span>ARENA BATTLE TV</span>
@@ -909,7 +814,7 @@
         <li><a href="#tournaments">Tournaments</a></li>
         <li><a href="#how-to-play">How to Play</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#" onclick="showDownloadOptions(); return false;" class="nav-download-btn"><i class="fab fa-android"></i> Download APK</a></li>
+        <li><a href="Arena-Battle-TV.apk" class="nav-download-btn"><i class="fab fa-android"></i> Download APK</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
 </nav>
@@ -919,41 +824,20 @@
     <div class="hero-badge">
         <i class="fas fa-fire"></i>
         🏆 India's #1 Free Fire Tournament Platform
-<<<<<<< HEAD
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
     </div>
 
     <h1>ARENA BATTLE TV</h1>
     <p class="hero-sub">Join thousands of players in daily Free Fire tournaments. Win real cash prizes, get instant payouts, and prove your skills!</p>
 
     <div class="hero-actions">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <a href="Arena-Battle-TV.apk" class="btn-primary pulse-anim">
-        <i class="fab fa-android"></i>
-        Download APK Free
-    </a>
-    <a href="#features" class="btn-secondary">
-        <i class="fas fa-play-circle"></i>
-        See Features
-    </a>
-=======
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-        <button onclick="showDownloadOptions()" class="btn-primary pulse-anim">
+        <a href="Arena-Battle-TV.apk" class="btn-primary pulse-anim">
             <i class="fab fa-android"></i>
             Download APK Free
-        </button>
+        </a>
         <a href="#features" class="btn-secondary">
             <i class="fas fa-play-circle"></i>
             See Features
         </a>
-<<<<<<< HEAD
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
     </div>
 
     <div class="stats-bar">
@@ -1158,27 +1042,6 @@
     </div>
 </footer>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-<!-- ===== DOWNLOAD MODAL ===== -->
-<div class="modal-overlay" id="downloadModal">
-    <div class="modal-box">
-        <button class="modal-close" onclick="hideDownloadOptions()"><i class="fas fa-times"></i></button>
-        <h3>📱 Select Your Device</h3>
-        <p class="sub">Choose the version compatible with your Android device</p>
-        <div id="apkOptions">
-            <p style="color:var(--text-dim); text-align:center;">Loading versions...</p>
-        </div>
-    </div>
-</div>
-
-<<<<<<< HEAD
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
 <!-- ===== LEGAL MODAL ===== -->
 <div class="legal-modal" id="legalModal">
     <div class="legal-modal-box">
@@ -1252,14 +1115,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    let apkData = {};
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
-    let apkData = {};
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
     let selectedRating = 0;
 
     function formatNumber(num) {
@@ -1285,21 +1140,11 @@
         });
         star.addEventListener('mouseout', () => {
             stars.forEach(s => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                stars.forEach(s => s.style.color = '');
-=======
                 s.style.color = '';
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
-                s.style.color = '';
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
             });
         });
     });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     // Track Download (simplifying)
     const downloadBtns = document.querySelectorAll('a[href="Arena-Battle-TV.apk"]');
     downloadBtns.forEach(btn => {
@@ -1315,56 +1160,6 @@
             } catch (e) { console.error("Track download error:", e); }
         });
     });
-=======
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-    // Download Modal
-    window.showDownloadOptions = () => {
-        const modal = document.getElementById('downloadModal');
-        const container = document.getElementById('apkOptions');
-        modal.style.display = 'flex';
-
-        const versions = [
-            { id: 'v8a', name: 'Arena Battle TV (ARM64)', desc: 'Best for modern phones — Fastest ⚡', icon: 'fas fa-bolt' },
-            { id: 'v7a', name: 'Arena Battle TV (v7a)',   desc: 'For older/budget Android phones 📱', icon: 'fas fa-mobile-alt' },
-            { id: 'x64', name: 'Arena Battle TV (x64)',   desc: 'For emulators & tablets 💻', icon: 'fas fa-laptop' }
-        ];
-
-        let html = '';
-        versions.forEach(v => {
-            const url = apkData[`apkUrl_${v.id}`] || `Arena-Battle-TV-${v.id}.apk`;
-            html += `
-                <a href="${url}" onclick="trackDownload('${v.id}')" class="apk-option">
-                    <div class="apk-icon"><i class="${v.icon}"></i></div>
-                    <div class="apk-info">
-                        <div class="apk-name">${v.name}</div>
-                        <div class="apk-desc">${v.desc}</div>
-                    </div>
-                    <i class="fas fa-download" style="margin-left:auto;color:var(--primary);"></i>
-                </a>`;
-        });
-        container.innerHTML = html;
-    };
-
-    window.hideDownloadOptions = () => {
-        document.getElementById('downloadModal').style.display = 'none';
-    };
-
-    window.trackDownload = async (arch) => {
-        try {
-            const configRef = doc(db, "settings", "app_config");
-            await setDoc(configRef, { downloadCount: increment(1) }, { merge: true });
-            await addDoc(collection(db, "download_logs"), {
-                architecture: arch || 'unknown',
-                timestamp: serverTimestamp(),
-                userAgent: navigator.userAgent
-            });
-        } catch (e) { console.error("Track download error:", e); }
-    };
-<<<<<<< HEAD
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
 
     window.submitReview = async () => {
         const name = document.getElementById('reviewerName').value.trim();
@@ -1437,14 +1232,6 @@
         onSnapshot(configRef, (snap) => {
             if (snap.exists()) {
                 const d = snap.data();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                apkData = d;
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
-=======
-                apkData = d;
->>>>>>> 215e1810d011a662040057ca8665df24deb71ec2
                 document.getElementById('totalWinnings').innerText = "₹" + formatNumber(d.totalWinnings || 0) + "+";
                 document.getElementById('downloadCount').innerText = formatNumber(d.downloadCount || 0) + "+";
                 document.getElementById('visitCount').innerText = formatNumber(d.visitCount || 0) + "+";
@@ -1518,9 +1305,6 @@
     });
 
     // Close modals on overlay click
-    document.getElementById('downloadModal').addEventListener('click', function(e) {
-        if (e.target === this) hideDownloadOptions();
-    });
     document.getElementById('legalModal').addEventListener('click', function(e) {
         if (e.target === this) closePolicy();
     });
