@@ -828,15 +828,9 @@
         <li><a href="#tournaments">Tournaments</a></li>
         <li><a href="#how-to-play">How to Play</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-download-btn" onclick="toggleDownloadMenu(event)"><i class="fab fa-android"></i> Download APK <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown-menu" id="navDropdown">
-                <li><a href="Arena-Battle-TV-v7a.apk">v7a (Older Android)</a></li>
-                <li><a href="Arena-Battle-TV-v8a.apk">v8a (Newer Android)</a></li>
-                <li><a href="Arena-Battle-TV-x64.apk">x64 (High Performance)</a></li>
-            </ul>
+        <li class="nav-item">
+            <a href="#download-section" class="nav-download-btn">Download APK</a>
         </li>
-
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
 </nav>
@@ -851,25 +845,16 @@
     <h1>ARENA BATTLE TV</h1>
     <p class="hero-sub">Join thousands of players in daily Free Fire tournaments. Win real cash prizes, get instant payouts, and prove your skills!</p>
 
-        <div class="hero-actions">
-            <div class="dropdown">
-                <a href="#" class="btn-primary pulse-anim" onclick="toggleDownloadMenu(event)">
-                    <i class="fab fa-android"></i>
-                    Download APK
-                </a>
-                <ul class="dropdown-menu" id="heroDropdown" style="left: 0; right: auto;">
-                    <li><a href="Arena-Battle-TV-v7a.apk">Download v7a</a></li>
-                    <li><a href="Arena-Battle-TV-v8a.apk">Download v8a</a></li>
-                    <li><a href="Arena-Battle-TV-x64.apk">Download x64</a></li>
-                </ul>
-            </div>
-            <a href="#features" class="btn-secondary">
-                <i class="fas fa-play-circle"></i>
-                See Features
-            </a>
+    <div id="download-section" class="hero-actions" style="flex-direction: column; gap: 15px; align-items: center;">
+        <p style="color:var(--text-dim); margin-bottom:5px;">Select your device architecture to download:</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+            <a href="Arena-Battle-TV-v7a.apk" class="btn-primary">v7a (Older)</a>
+            <a href="Arena-Battle-TV-v8a.apk" class="btn-primary">v8a (Newer)</a>
+            <a href="Arena-Battle-TV-x64.apk" class="btn-primary">x64 (High Perf)</a>
         </div>
+    </div>
 
-    <div class="stats-bar">
+    <div class="stats-bar" style="margin-top: 40px;">
         <div class="stat-item">
             <h3 id="downloadCount">...</h3>
             <p><i class="fas fa-download" style="margin-right:5px;color:var(--primary)"></i>Downloads</p>
