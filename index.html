@@ -141,14 +141,28 @@
             transform: translateY(-2px) !important;
             box-shadow: 0 8px 30px var(--glow) !important;
         }
-        .hamburger {
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-menu {
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+            position: absolute;
+            top: 100%; right: 0;
+            background: #12121c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 101;
+            padding: 10px 0;
+            list-style: none;
         }
+        .dropdown-menu li a {
+            color: white;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu li a:hover { background: rgba(255,75,43,0.1); }
+        .dropdown:hover .dropdown-menu { display: block; }
 
         /* ===== HERO ===== */
         .hero {
@@ -814,7 +828,9 @@
         <li><a href="#tournaments">Tournaments</a></li>
         <li><a href="#how-to-play">How to Play</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="Arena-Battle-TV.apk" class="nav-download-btn"><i class="fab fa-android"></i> Download APK</a></li>
+        <li class="nav-item">
+            <a href="#download-section" class="nav-download-btn">Download APK</a>
+        </li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
 </nav>
@@ -829,18 +845,14 @@
     <h1>ARENA BATTLE TV</h1>
     <p class="hero-sub">Join thousands of players in daily Free Fire tournaments. Win real cash prizes, get instant payouts, and prove your skills!</p>
 
-    <div class="hero-actions">
-        <a href="Arena-Battle-TV.apk" class="btn-primary pulse-anim">
-            <i class="fab fa-android"></i>
-            Download APK Free
-        </a>
-        <a href="#features" class="btn-secondary">
-            <i class="fas fa-play-circle"></i>
-            See Features
-        </a>
+    <div id="download-section" class="hero-actions" style="flex-direction: column; gap: 15px; align-items: center;">
+        <p style="color:var(--text-dim); margin-bottom:5px;">Select your device architecture to download:</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+            <a href="Arena-Battle-TV.APK" class="btn-primary">Download APK</a>
+        </div>
     </div>
 
-    <div class="stats-bar">
+    <div class="stats-bar" style="margin-top: 40px;">
         <div class="stat-item">
             <h3 id="downloadCount">...</h3>
             <p><i class="fas fa-download" style="margin-right:5px;color:var(--primary)"></i>Downloads</p>
@@ -894,6 +906,21 @@
                 <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
                 <h4>Anti-Cheat Protection</h4>
                 <p>Our advanced anti-cheat system detects hackers and cheaters instantly. Fair play is guaranteed for all players.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-users-viewfinder"></i></div>
+                <h4>Refer & Earn</h4>
+                <p>Invite your friends to Arena Battle TV and earn bonus cash for every successful referral. Grow your squad and earn together!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h4>Live Leaderboard</h4>
+                <p>Track your ranking in real-time. Compete against top players and dominate the leaderboard to win exclusive rewards.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-video"></i></div>
+                <h4>Match Highlights</h4>
+                <p>Don't miss the action. View post-match highlights and relive your top plays and intense battle moments directly in the app.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-headset"></i></div>
@@ -1295,6 +1322,21 @@
     // Mobile nav toggle
     window.toggleNav = () => {
         document.getElementById('navLinks').classList.toggle('open');
+    };
+
+    // Download menu toggle
+    window.toggleDownloadMenu = (e) => {
+        e.preventDefault();
+        const menu = e.target.closest('.dropdown').querySelector('.dropdown-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // Close dropdowns when clicking outside
+    window.onclick = (event) => {
+        if (!event.target.matches('.nav-download-btn')) {
+            const dropdowns = document.querySelectorAll('.dropdown-menu');
+            dropdowns.forEach(d => d.style.display = 'none');
+        }
     };
 
     // Close nav on link click
