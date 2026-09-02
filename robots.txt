@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arenabattletv.github.io/tunament-website/sitemap.xml
+Sitemap: https://ir-battle-official.github.io/IR-BATTLE/sitemap.xml
