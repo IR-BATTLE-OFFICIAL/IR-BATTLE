@@ -1016,7 +1016,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
         <li><a href="#features">Features</a></li>
-        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#app-highlights">Highlights</a></li>
         <li><a href="#modes">Modes</a></li>
         <li><a href="#how-to-play">How to Play</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -1133,33 +1133,44 @@
     </div>
 </section>
 
-<!-- PRIZE CALCULATOR -->
-<section id="calculator">
-    <div class="calc-panel">
-        <div style="text-align:center;">
-            <div class="section-badge"><i class="fas fa-calculator"></i> Earnings Calculator</div>
-            <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-top:8px;">ESTIMATE YOUR <span>WINNING CASH</span></h3>
-        </div>
-        <div class="calc-body">
-            <div class="calc-controls">
-                <div class="calc-label">
-                    <span>Expected Kills:</span>
-                    <span id="killsVal" style="color:var(--primary); font-weight:900;">5 Kills</span>
-                </div>
-                <input type="range" min="1" max="20" value="5" class="calc-slider" id="killsSlider" oninput="updateCalc()">
+<!-- APP HIGHLIGHTS & ADVANCED FEATURES -->
+<section id="app-highlights">
+    <div class="section-header">
+        <div class="section-badge"><i class="fas fa-star"></i> App Highlights</div>
+        <h2 class="section-title">NEXT-GEN <span>ESPORTS EXPERIENCE</span></h2>
+        <p class="section-desc">Loaded with powerful features engineered for real competitive Free Fire players.</p>
+    </div>
 
-                <div class="calc-label" style="margin-top:10px;">Select Match Type:</div>
-                <select id="modeSelect" class="calc-select" onchange="updateCalc()">
-                    <option value="solo">Solo Battle (₹30 per kill)</option>
-                    <option value="duo">Duo Battle (₹25 per kill)</option>
-                    <option value="squad" selected>Squad Battle (₹20 per kill)</option>
-                </select>
-            </div>
-            <div class="calc-display">
-                <div class="calc-display-title">POTENTIAL EARNINGS</div>
-                <div class="calc-amount" id="prizeCalcVal">₹250</div>
-                <p style="font-size:0.8rem; color:var(--text-sub); margin-top:10px;">Includes Winner Bonus + Per Kill Rewards</p>
-            </div>
+    <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:var(--primary); background:rgba(255,183,0,0.1);"><i class="fas fa-cubes"></i></div>
+            <h4>Custom Room Lobby Slots</h4>
+            <p>Select your exact slot numbers (Solo, Duo A/B boxes, or Squad A/B/C/D boxes) just like official Free Fire tournaments.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:var(--success); background:rgba(0,255,135,0.1);"><i class="fas fa-key"></i></div>
+            <h4>Auto Room ID & Pass</h4>
+            <p>Room Credentials are automatically released in-app exactly 15 minutes before match start time with one-tap copy buttons.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:var(--accent-cyan); background:rgba(0,240,255,0.1);"><i class="fas fa-robot"></i></div>
+            <h4>Built-in AI Assistant</h4>
+            <p>Smart AI Gaming Assistant inside the app to instantly solve your match queries, rules, and account questions 24/7.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:var(--text-gold); background:rgba(255,230,0,0.1);"><i class="fas fa-wallet"></i></div>
+            <h4>Instant 24x7 Payouts</h4>
+            <p>Win matches and transfer funds instantly to PhonePe, Google Pay, Paytm, or any UPI ID with zero withdrawal charges.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:#FF5500; background:rgba(255,85,0,0.1);"><i class="fas fa-shield-virus"></i></div>
+            <h4>100% Anti-Cheat Guarantee</h4>
+            <p>Advanced anti-hack protection, spectate verification, and player report system ensure 100% fair battlegrounds.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-glow" style="color:#9D00FF; background:rgba(157,0,255,0.1);"><i class="fas fa-chart-line"></i></div>
+            <h4>Live Match Results</h4>
+            <p>Transparent match kill logs, detailed tournament standings, and instant wallet balance credits right after match completion.</p>
         </div>
     </div>
 </section>
@@ -1567,21 +1578,6 @@
             el.classList.add('active');
             el.querySelector('.faq-body').style.display = 'block';
         }
-    }
-
-    // Prize Calculator Logic
-    function updateCalc() {
-        const kills = parseInt(document.getElementById('killsSlider').value);
-        const mode = document.getElementById('modeSelect').value;
-        document.getElementById('killsVal').innerText = kills + (kills === 1 ? " Kill" : " Kills");
-
-        let rate = 20;
-        if (mode === 'solo') rate = 30;
-        if (mode === 'duo') rate = 25;
-
-        const baseWin = 100;
-        const total = (kills * rate) + baseWin;
-        document.getElementById('prizeCalcVal').innerText = "₹" + total;
     }
 
     // Legal Modals
